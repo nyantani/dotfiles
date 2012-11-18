@@ -12,9 +12,11 @@ Bundle 'quickrun.vim'
 Bundle 'unite.vim'
 Bundle 'sudo.vim'
 Bundle 'basyura/jslint.vim'
-Bundle 'The_NERD_Commenter'
 Bundle 'eregex.vim'
 Bundle 'https://github.com/Shougo/neocomplcache/'
+Bundle 'tpope/vim-rails'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'tomtom/tcomment_vim'
 
 "" generate config
 set number
@@ -62,16 +64,16 @@ autocmd BufReadPost *
 	\ endif
 
 "" neocomplcache
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_auto_select = 1
+"let g:neocomplcache_enable_at_startup = 1
+"let g:neocomplcache_enable_auto_select = 1
 " Use camel case completion.
 "let g:neocomplcache_enable_camel_case_completion = 1
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neocomplcache_snippets_expand)
 smap <C-k>     <Plug>(neocomplcache_snippets_expand)
 " Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_enable_underbar_completion = 1
+"let g:neocomplcache_enable_smart_case = 1
+"let g:neocomplcache_enable_underbar_completion = 1
 " quick match
 "let g:neocomplcache_enable_quick_match = 1
 "doesn't work on this version of neocomplcache
@@ -105,6 +107,5 @@ augroup SkeletonAu
 	autocmd BufNewFile *.cgi 0r /home/.vim/skel.cgi
 	autocmd BufNewFile *.html 0r /home/.vim/skel.html
 augroup END
-
 
 
