@@ -17,6 +17,8 @@ Bundle 'https://github.com/Shougo/neocomplcache/'
 Bundle 'tpope/vim-rails'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tomtom/tcomment_vim'
+Bundle 'vim-scripts/taglist.vim'
+Bundle 'Shougo/neocomplcache'
 
 "" generate config
 set number
@@ -64,26 +66,27 @@ autocmd BufReadPost *
 	\ endif
 
 "" neocomplcache
-"let g:neocomplcache_enable_at_startup = 1
-"let g:neocomplcache_enable_auto_select = 1
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_auto_select = 1
 " Use camel case completion.
-"let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_camel_case_completion = 1
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neocomplcache_snippets_expand)
 smap <C-k>     <Plug>(neocomplcache_snippets_expand)
 " Use smartcase.
-"let g:neocomplcache_enable_smart_case = 1
-"let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_enable_underbar_completion = 1
 " quick match
-"let g:neocomplcache_enable_quick_match = 1
-"doesn't work on this version of neocomplcache
-" <CR>: close popup and save indent.
-inoremap <expr><CR>  neocomplcache#close_popup() . "\<CR>"
+let g:neocomplcache_enable_quick_match = 1
+
+" Enterで候補決定
+inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+"inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
@@ -107,5 +110,11 @@ augroup SkeletonAu
 	autocmd BufNewFile *.cgi 0r /home/.vim/skel.cgi
 	autocmd BufNewFile *.html 0r /home/.vim/skel.html
 augroup END
+
+"taglist
+let Tlist_Auto_Open = 1
+let Tlist_Compact_Format = 1
+let Tlist_Exit_OnlyWindow = 1
+let Tlist_WinWidth = 20
 
 
