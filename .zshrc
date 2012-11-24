@@ -38,3 +38,5 @@ export PATH=/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/lo
 
 # renv
 eval "$(rbenv init - zsh)"
+
+alias ctags='/usr/local/Cellar/ctags/5.8/bin/ctags'
