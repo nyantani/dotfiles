@@ -94,7 +94,7 @@ inoremap <expr><C-e>  neocomplcache#cancel_popup()
 " バッファ一覧
 nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
 " ファイル一覧
-nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file file/new<CR>
 " レジスタ一覧
 nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
 " 最近使用したファイル一覧
@@ -116,5 +116,6 @@ let Tlist_Auto_Open = 1
 let Tlist_Compact_Format = 1
 let Tlist_Exit_OnlyWindow = 1
 let Tlist_WinWidth = 20
+nnoremap <C-t> :Tlist<CR>
 
 
