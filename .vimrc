@@ -118,4 +118,7 @@ let Tlist_Exit_OnlyWindow = 1
 let Tlist_WinWidth = 20
 nnoremap <C-t> :Tlist<CR>
 
+"php syntax check type ':make' to check syntax of current file
+autocmd filetype php :set makeprg=php\ -l\ %
+autocmd filetype php :set errorformat=%m\ in\ %f\ on\ line\ %l
 
