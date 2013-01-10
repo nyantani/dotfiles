@@ -19,6 +19,7 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'vim-scripts/taglist.vim'
 Bundle 'Shougo/neocomplcache'
+Bundle 'vim-scripts/Align'
 
 "" generate config
 set number
@@ -121,4 +122,4 @@ nnoremap <C-t> :Tlist<CR>
 "php syntax check type ':make' to check syntax of current file
 autocmd filetype php :set makeprg=php\ -l\ %
 autocmd filetype php :set errorformat=%m\ in\ %f\ on\ line\ %l
-
+inoremap <C-l> error_log(print_r($type, true));
