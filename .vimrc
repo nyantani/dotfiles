@@ -11,7 +11,7 @@ Bundle 'neco-look'
 Bundle 'quickrun.vim'
 Bundle 'unite.vim'
 Bundle 'sudo.vim'
-Bundle 'basyura/jslint.vim'
+" Bundle 'basyura/jslint.vim'
 Bundle 'eregex.vim'
 Bundle 'https://github.com/Shougo/neocomplcache/'
 Bundle 'tpope/vim-rails'
@@ -20,6 +20,8 @@ Bundle 'tomtom/tcomment_vim'
 Bundle 'vim-scripts/taglist.vim'
 Bundle 'Shougo/neocomplcache'
 Bundle 'vim-scripts/Align'
+Bundle 'kana/vim-fakeclip'
+Bundle 'edsono/vim-matchit'
 
 "" generate config
 set number
@@ -39,6 +41,8 @@ set softtabstop=4
 set shiftwidth=4
 set fileencodings=utf8,iso-2022-jp,cp932,euc-jp
 autocmd FileType * setlocal formatoptions-=ro " not commenting inserting CR
+set clipboard=unnamed,autoselect
+filetype plugin indent on
 "set autoindent
 "set smartindent
 
@@ -123,3 +127,17 @@ nnoremap <C-t> :Tlist<CR>
 autocmd filetype php :set makeprg=php\ -l\ %
 autocmd filetype php :set errorformat=%m\ in\ %f\ on\ line\ %l
 inoremap <C-l> error_log(print_r($type, true));
+
+" utils
+inoremap () ()<LEFT>
+inoremap {} {}<LEFT>
+
+" copy to clipboard
+" if has("unix") && match(system("uname"),'Darwin') != -1 " mac
+"   " http://www.mail-archive.com/vim-latex-devel@lists.sourceforge.net/msg00773.html
+"   nnoremap fc :call system("pbcopy", @")<CR>
+"   nnoremap fp :r! pbpaste<CR>
+" elseif has('win32unix') " cygwin
+"   nnoremap fc :call system("putclip", @")<CR>
+"   nnoremap fp :r! getclip<CR>
+" endif
