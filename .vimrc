@@ -26,6 +26,7 @@ Bundle 'edsono/vim-matchit'
 "" generate config
 set number
 syntax on
+filetype plugin on
 
 " hilight search
 set hlsearch
@@ -42,8 +43,7 @@ set shiftwidth=4
 set fileencodings=utf8,iso-2022-jp,cp932,euc-jp
 autocmd FileType * setlocal formatoptions-=ro " not commenting inserting CR
 set clipboard=unnamed,autoselect
-filetype plugin indent on
-"set autoindent
+"set autoindent     
 "set smartindent
 
 "" recognizing filetype
@@ -58,6 +58,14 @@ autocmd FileType javascript call s:javascript_filetype_settings()
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 
+" html setting
+function! s:html_filetype_settings()
+  set expandtab
+  set tabstop=2
+  set shiftwidth=2
+endfunction
+autocmd FileType html call s:html_filetype_settings()
+autocmd BufEnter *.tpl call s:html_filetype_settings()
 "" color
 "colorscheme zenburn
 "set autowrite
