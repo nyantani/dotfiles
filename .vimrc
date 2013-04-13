@@ -49,23 +49,23 @@ set clipboard=unnamed,autoselect
 "" recognizing filetype
 au BufReadPost,BufNewFile *.cgi :setl filetype=perl
 " jslint
-function! s:javascript_filetype_settings()
- autocmd BufLeave     <buffer> call jslint#clear()
- autocmd BufWritePost <buffer> call jslint#check()
- autocmd CursorMoved  <buffer> call jslint#message()
-endfunction
-autocmd FileType javascript call s:javascript_filetype_settings()
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+" function! s:javascript_filetype_settings()
+ " autocmd BufLeave     <buffer> call jslint#clear()
+ " autocmd BufWritePost <buffer> call jslint#check()
+ " autocmd CursorMoved  <buffer> call jslint#message()
+" endfunction
+" autocmd FileType javascript call s:javascript_filetype_settings()
+" autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+" autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 
 " html setting
-function! s:html_filetype_settings()
-  set expandtab
-  set tabstop=2
-  set shiftwidth=2
-endfunction
-autocmd FileType html call s:html_filetype_settings()
-autocmd BufEnter *.tpl call s:html_filetype_settings()
+" function! s:html_filetype_settings()
+"   set expandtab
+"   set tabstop=2
+"   set shiftwidth=2
+" endfunction
+" autocmd FileType html call s:html_filetype_settings()
+" autocmd BufEnter *.tpl call s:html_filetype_settings()
 "" color
 "colorscheme zenburn
 "set autowrite
@@ -125,6 +125,7 @@ augroup SkeletonAu
 augroup END
 
 "taglist
+set tags+=~/git/fishing/tags
 let Tlist_Auto_Open = 1
 let Tlist_Compact_Format = 1
 let Tlist_Exit_OnlyWindow = 1
@@ -139,6 +140,9 @@ inoremap <C-l> error_log(print_r($type, true));
 " utils
 inoremap () ()<LEFT>
 inoremap {} {}<LEFT>
+inoremap [] []<LEFT>
+inoremap '' ''<LEFT>
+inoremap "" ""<LEFT>
 
 " copy to clipboard
 " if has("unix") && match(system("uname"),'Darwin') != -1 " mac
