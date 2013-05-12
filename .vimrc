@@ -6,6 +6,9 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 filetype plugin on
 
+autocmd!
+set shell=/bin/zsh
+
 Bundle 'gmarik/vundle'
 Bundle 'neco-look'
 Bundle 'quickrun.vim'
@@ -22,9 +25,12 @@ Bundle 'Shougo/neocomplcache'
 Bundle 'vim-scripts/Align'
 Bundle 'kana/vim-fakeclip'
 Bundle 'edsono/vim-matchit'
+Bundle 'scrooloose/syntastic'
+
 
 "" generate config
 set number
+set smartcase
 syntax on
 filetype plugin on
 
@@ -43,8 +49,6 @@ set shiftwidth=4
 set fileencodings=utf8,iso-2022-jp,cp932,euc-jp
 autocmd FileType * setlocal formatoptions-=ro " not commenting inserting CR
 set clipboard=unnamed,autoselect
-"set autoindent     
-"set smartindent
 
 "" recognizing filetype
 au BufReadPost,BufNewFile *.cgi :setl filetype=perl
@@ -81,7 +85,6 @@ autocmd BufReadPost *
 "" neocomplcache
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_auto_select = 1
-" Use camel case completion.
 let g:neocomplcache_enable_camel_case_completion = 1
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neocomplcache_snippets_expand)
@@ -132,17 +135,44 @@ let Tlist_Exit_OnlyWindow = 1
 let Tlist_WinWidth = 20
 nnoremap <C-t> :Tlist<CR>
 
-"php syntax check type ':make' to check syntax of current file
-autocmd filetype php :set makeprg=php\ -l\ %
-autocmd filetype php :set errorformat=%m\ in\ %f\ on\ line\ %l
 inoremap <C-l> error_log(print_r($type, true));
+inoremap <C-p> <?php  ?>
+
+autocmd filetype perl :compiler perl
+autocmd filetype php :compiler php
 
 " utils
-inoremap () ()<LEFT>
-inoremap {} {}<LEFT>
-inoremap [] []<LEFT>
-inoremap '' ''<LEFT>
-inoremap "" ""<LEFT>
+" inoremap () ()<LEFT>
+" inoremap {} {}<LEFT>
+" inoremap [] []<LEFT>
+" inoremap '' ''<LEFT>
+" inoremap "" ""<LEFT>
+
+let g:syntastic_check_on_open = 1
+let g:syntastic_enable_signs = 1
+let g:syntastic_echo_current_error = 1
+let g:syntastic_auto_loc_list = 2
+let g:syntastic_enable_highlighting = 1
+let g:syntastic_auto_jump=1
+let g:syntastic_php_phpcs_args = " --tab-width=4 --standard=PEARish"
+" TODO check
+let g:syntastic_php_php_args = '-l'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+" time
+inoremap <expr> ,df strftime('%Y-%m-%d %H:%M:%S')
+inoremap <expr> ,dd strftime('%Y-%m-%d')
+inoremap <expr> ,dt strftime('%H:%M:%S')
+
+if !exists('g:flymake_enabled')
+	let g:flymake_enabled = 1
+	autocmd BufWritePost *.rb,*.pl,*.pm,*.php silent make
+endif
+
+" makeの結果を別ウインドウで開きたいときのやつ
+" autocmd QuickFixCmdPost * :copen
 
 " copy to clipboard
 " if has("unix") && match(system("uname"),'Darwin') != -1 " mac
