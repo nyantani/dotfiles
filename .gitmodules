@@ -1,3 +1,6 @@
 [submodule "vundle"]
 	path = vundle
 	url = http://github.com/gmarik/vundle.git
+[submodule "antigen"]
+	path = antigen
+	url = git://github.com/zsh-users/antigen.git
