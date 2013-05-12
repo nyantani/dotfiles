@@ -1,0 +1,3 @@
+# source ~/dotfiles/antigen/antigen.zsh
+# 
+# antigen-bundle autojump
