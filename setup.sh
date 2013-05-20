@@ -10,7 +10,6 @@ ln -fs "$PWD/.tmux.conf"    ~/.tmux.conf
 git submodule init && git submodule update
 
 mkdir -p ~/.vim/bundle
-ln -fs "$PWD/vundle" ~/.vim/bundle/vundle
 
 echo "done."
 
