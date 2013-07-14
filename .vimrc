@@ -9,6 +9,7 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+" set re=1
 " colorschemes
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'croaker/mustang-vim'
@@ -22,6 +23,7 @@ NeoBundle 'therubymug/vim-pyte'
 NeoBundle 'tomasr/molokai'
 
 " utility plugins
+NeoBundle 'unite.vim'
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
       \     'windows' : 'make -f make_mingw32.mak',
@@ -37,7 +39,7 @@ NeoBundle 'tpope/vim-fugitive'
         \   }
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-NeoBundle 'vimtaku/hl_matchit.vim.git' " ブロックをハイライト
+" NeoBundle 'vimtaku/hl_matchit.vim.git' " ブロックをハイライト
 NeoBundle 'ujihisa/unite-colorscheme' " :Unite colorscheme -auto-preview が便利 
 NeoBundle 'L9'
 NeoBundle 'FuzzyFinder'
@@ -45,22 +47,22 @@ NeoBundle 'rails.vim'
 NeoBundle 'git://git.wincent.com/command-t.git'
 NeoBundle 'ujihisa/neco-look'
 NeoBundle 'quickrun.vim'
-NeoBundle 'unite.vim'
 NeoBundle 'sudo.vim'
 " NeoBundle 'basyura/jslint.vim'
 NeoBundle 'eregex.vim'
 " NeoBundle 'tpope/vim-rails'
 " NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'vim-scripts/taglist.vim'
+" NeoBundle 'vim-scripts/taglist.vim'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'vim-scripts/Align'
 NeoBundle 'kana/vim-fakeclip'
-NeoBundle 'edsono/vim-matchit'
+" NeoBundle 'edsono/vim-matchit'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'dag/vim2hs' " haskell
 NeoBundle 't9md/vim-unite-ack'
+NeoBundle 'tsukkee/unite-tag.git'
 
 filetype plugin indent on     " Required!
 
@@ -147,14 +149,17 @@ let g:neocomplcache_dictionary_filetype_lists = {
 			\ }
 
 "taglist
-let g:Tlist_Auto_Open = 1
+" let g:Tlist_Auto_Open = 1
 " let g:Tlist_Compact_Format = 1
-let g:Tlist_Exit_OnlyWindow = 1
-let g:Tlist_WinWidth = 20
+" let g:Tlist_Exit_OnlyWindow = 1
+" let g:Tlist_WinWidth = 20
 
 " vimfiler
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_safe_mode_by_default = 0
+" nnoremap <silent> ,vf :<C-u>VimFiler<CR>
+" nnoremap <silent> ,vf :<C-u>VimFiler -buffer-name=explorer -split -simple --winwidth=20 -toggle -no-quit<CR>
+" command Vf VimFiler -buffer-name=explorer -split -simple -winwidth=25 -toggle -no-quit
 
 " syntastic
 let g:syntastic_check_on_open = 1
@@ -162,42 +167,44 @@ let g:syntastic_enable_signs = 1
 let g:syntastic_echo_current_error = 1
 let g:syntastic_auto_loc_list = 2
 let g:syntastic_enable_highlighting = 1
-let g:syntastic_auto_jump=1
-let g:syntastic_php_phpcs_args = " --tab-width=4 --standard=PEARish"
-" TODO check
+" let g:syntastic_auto_jump=1
+" let g:syntastic_php_phpcs_args = " --tab-width=4 --standard=PEARish"
+let g:syntastic_php_phpcs_args = " --tab-width=4"
+" " TODO check
 let g:syntastic_php_php_args = '-l'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 " matchit
-source $VIMRUNTIME/macros/matchit.vim
+" source $VIMRUNTIME/macros/matchit.vim
 
 " hl_matchit
-let g:hl_matchit_enable_on_vim_startup = 1
-let g:hl_matchit_hl_groupname = 'Title'
-let g:hl_matchit_allow_ft_regexp = 'html\|vim\|ruby\|sh\|tpl'
+" let g:hl_matchit_enable_on_vim_startup = 1
+" let g:hl_matchit_hl_groupname = 'Title'
+" let g:hl_matchit_allow_ft_regexp = 'html\|vim\|ruby\|sh\|tpl'
 
 " php settings
 autocmd filetype php inoremap <C-l> error_log(print_r($type, true));
 autocmd filetype php inoremap <C-p> <?php  ?>
 autocmd filetype php :compiler php
+" autocmd filetype *.tpl let g:tcommentGuessFileType_smarty = 1
+au BufReadPost,BufNewFile *.tpl setlocal filetype=smarty
 
 " perl settings
 autocmd filetype perl :compiler perl
 
 " key mapping
 "Unite.vim
-nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file file/new<CR>
-nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
-nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
-nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+let g:unite_enable_start_insert=1
+nnoremap <silent>,ub :<C-u>Unite buffer<CR>
+nnoremap <silent>,uf :<C-u>UniteWithBufferDir file file/new -buffer-name=files<CR>
+nnoremap <silent>,ur :<C-u>Unite -buffer-name=register register<CR>
+nnoremap <silent>,um :<C-u>Unite file_mru<CR>
+nnoremap <silent>,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 
 " time
 inoremap <expr> ,df strftime('%Y-%m-%d %H:%M:%S')
 inoremap <expr> ,dd strftime('%Y-%m-%d')
 inoremap <expr> ,dt strftime('%H:%M:%S')
 
-" taglist.vim
-nnoremap <C-t> :Tlist<CR>
