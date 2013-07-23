@@ -1,0 +1,24 @@
+[user]
+	name = nyantani
+[color]
+	ui = auto
+[core]
+	editor = vim
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	lga = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	dt = difftool
+[merge]
+	tool = vimdiff
+; [diff]
+; 	tool = vimdiff
+[diff]
+	; external = git_diff_wrapper.sh
+[push]
+	default = current
+[pull]
+	rebase = true
