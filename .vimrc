@@ -1,15 +1,28 @@
-set nocompatible               " Be iMproved
+" Note: Skip initialization for vim-tiny or vim-small.
+if 0 | endif
+
+if &compatible
+  set nocompatible               " Be iMproved
+endif
 
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-call neobundle#rc(expand('~/.vim/bundle/'))
+" Required:
+set runtimepath^=~/.vim/bundle/neobundle.vim/
 
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
 
+" Let NeoBundle manage NeoBundle
+" Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-" set re=1
+" My Bundles here:
+" Refer to |:NeoBundle-examples|.
+" Note: You don't set neobundle setting in .gvimrc!
+
 " colorschemes
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'croaker/mustang-vim'
@@ -44,25 +57,25 @@ NeoBundle 'ujihisa/unite-colorscheme' " :Unite colorscheme -auto-preview が便�
 NeoBundle 'L9'
 NeoBundle 'FuzzyFinder'
 NeoBundle 'rails.vim'
-NeoBundle 'git://git.wincent.com/command-t.git'
 NeoBundle 'ujihisa/neco-look'
 NeoBundle 'quickrun.vim'
 NeoBundle 'sudo.vim'
-" NeoBundle 'basyura/jslint.vim'
 NeoBundle 'eregex.vim'
-" NeoBundle 'tpope/vim-rails'
-" NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'tomtom/tcomment_vim'
-" NeoBundle 'vim-scripts/taglist.vim'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'vim-scripts/Align'
 NeoBundle 'kana/vim-fakeclip'
-" NeoBundle 'edsono/vim-matchit'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'dag/vim2hs' " haskell
 NeoBundle 't9md/vim-unite-ack'
 NeoBundle 'tsukkee/unite-tag.git'
+
+
+call neobundle#end()
+
+
+
 
 filetype plugin indent on     " Required!
 
