@@ -16,13 +16,8 @@ ZSH_THEME="ys"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias cp="cp -i"
 alias mv="mv -i"
-alias httpd="sudo /Applications/MAMP/Library/bin/httpd -k"
-alias mamp="/Applications/MAMP/"
-alias fishing='cd ~/git/fishing'
-alias mysql='/Applications/MAMP/Library/bin/mysql -uroot -proot'
-alias fishdb='/Applications/MAMP/Library/bin/mysql -uroot -proot -Dexplosion_fishing'
-alias refreshdb="$HOME/git/fishing/protected/tools/refreshLocalDb.sh"
 alias j="autojump"
+# alias client="cd $HOME/cocos2d-x-2.1.5/project/pen-client"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -47,17 +42,13 @@ plugins=(git autojump osx)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-# export PATH=/Applications/MAMP/bin/php/php5.4.4/bin:$HOME/dotfiles:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:$HOME/.phpenv/bin:$HOME/bin:$PATH
-export PATH=$HOME/.rbenv/:$HOME/dotfiles:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/opt/local/bin:/opt/local/sbin:$HOME/.phpenv/bin:$HOME/bin:$PATH
+export PATH=$HOME/perl5/bin:$HOME/.rbenv/:$HOME/dotfiles:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/opt/local/bin:/opt/local/sbin:$HOME/bin:$PATH:
 
-# alias php="/Applications/MAMP/bin/php/php5.4.4/bin/php"
 
 # renv
 eval "$(rbenv init - zsh)"
 
-# phpenv
-eval "$(phpenv init -)"
 source ~/perl5/perlbrew/etc/bashrc
 
 [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
-unalias j
+# unalias j

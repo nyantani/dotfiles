@@ -70,6 +70,8 @@ NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'dag/vim2hs' " haskell
 NeoBundle 't9md/vim-unite-ack'
 NeoBundle 'tsukkee/unite-tag.git'
+NeoBundle 'tpope/vim-haml'
+NeoBundle 'ruby-matchit'
 
 
 call neobundle#end()
@@ -147,13 +149,15 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php setlocal omnifunc=phpcomplete#CompleteTags
 autocmd FileType perl setlocal omnifunc=perlcomplete#CompleteTags
+autocmd FileType ruby setlocal omnifunc=rubycomplete#CompleteTags
 let g:neocomplcache_text_mode_filetypes = {
 	\ 'text': 1,
 	\ 'javascript': 1,
 	\ 'markdown': 1,
 	\ 'perl': 1,
 	\ 'html': 1,
-	\ 'php': 1
+	\ 'php': 1,
+	\ 'ruby': 1
 	\ }
 
 " Define dictionary.
@@ -206,6 +210,12 @@ au BufReadPost,BufNewFile *.tpl setlocal filetype=smarty
 
 " perl settings
 autocmd filetype perl :compiler perl
+
+" ruby settings
+autocmd filetype ruby :compiler ruby
+autocmd filetype ruby :setlocal softtabstop=2
+autocmd filetype ruby :setlocal shiftwidth=2
+autocmd filetype ruby :setlocal expandtab
 
 " key mapping
 "Unite.vim
